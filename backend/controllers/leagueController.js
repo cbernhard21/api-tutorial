@@ -9,6 +9,7 @@ const getLeagueInfo = (req, res) => {
 // @route POST /api/ejffl
 // @access Private
 const setLeagueInfo = (req, res) => {
+    console.log(req.body);
     res.status(200).json({message: 'Create league info'})
 }
 
