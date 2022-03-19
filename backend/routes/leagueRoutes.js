@@ -1,21 +1,12 @@
 const express = require('express');
+const { route } = require('express/lib/application');
 const router = express.Router();
+const { getLeagueInfo, 
+        setLeagueInfo, 
+        updateLeagueInfo, 
+        deleteLeagueInfo } = require('../controllers/leagueController');
 
-
-router.get('/', (req, res) => {
-    res.status(200).json({message: 'get ejffl data'})
-});
-
-router.post('/', (req, res) => {
-    res.status(200).json({message: 'Create league info'})
-});
-
-router.put('/:id', (req, res) => {
-    res.status(200).json({message: `update league info ${req.params.id}`});
-});
-
-router.delete('/:id', (req, res) => {
-    res.status(200).json({message: `delete league info ${req.params.id}`});
-});
+router.route('/').get(getLeagueInfo).post(setLeagueInfo);
+router.route('/:id').delete(deleteLeagueInfo).put(updateLeagueInfo);
 
 module.exports = router;
